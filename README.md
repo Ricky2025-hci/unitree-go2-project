@@ -177,6 +177,11 @@ Netmask: 255.255.255.0
 ```
 Click apply and wait for the network to be connected. This allows the computer to be on the same subnet as the GO2 robot.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e837d3db-17de-42eb-bf0c-b86edb621e6b" width="50%">
+</p>
+
+
 ## 8. Edit setup.sh for Customization
 
 Open setup.sh in unitree_ros2 folder by gedit. The setup.sh script sets the necessary environment variables for ROS 2 and network communication with the robot.
@@ -187,21 +192,24 @@ sudo gedit ~/unitree_ros2/setup.sh
 
 First, change the ROS distribution from foxy or galactic to humble. Then modify the network interface to match your actual device (e.g. enp3s0, eth0).
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3b7083c5-2f63-4398-95c0-e5e16994ea1e" width="80%">
+</p>
+
 ## 9. Run and Test
 
-List all available topics. If the robot is connected correctly, you will see Unitree-specific topics. There will be a lot. When this README file was first created, May 23rd 2025, length of the list was 104 lines.
+List all available topics. If the robot is connected correctly, you will see Unitree-specific topics. 
 
 ```bash
-/api/assistant_recorder/request
-/api/assistant_recorder/response
-/api/audiohub/request
-/api/audiohub/response
-/api/bashrunner/request
-/api/bashrunner/response
-/api/config/request
-/api/config/response
-...
+source ~/unitree_ros2/setup.sh
+ros2 topic list
 ```
+
+There will be a lot of topics like below. When this README file was first created, May 23rd 2025, length of the list was 104 lines.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c42fff6d-1ead-4916-98be-8088d1f785d3" width="50%">
+</p>
 
 ---
 
@@ -223,7 +231,12 @@ Download .cpp file from example folder to your local folder. The place to downlo
 Home/unitree_ros2/example/src/src
 ```
 
-Inside the src folder looks like the following after download. Be aware that we use "test_move.cpp" as the example file.
+Inside the src folder looks like the following picture after download. Be aware that we use "test_move.cpp" as the example file.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ab94b59a-44e6-40f9-8ff4-87158ee84aa3" width="50%">
+</p>
+
 
 ### Step 2. Edit CmakeLists.txt
 
