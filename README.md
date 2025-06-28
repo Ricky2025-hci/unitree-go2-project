@@ -14,8 +14,8 @@ This repository document is the step-by-step procedure to set up a development e
 - ROS 2 Humble Hawksbill
 - Internet connection
 - Unitree GO2 robot
-- Camera D435i
-- LiDAR Heisai-XT-16
+- Camera D435i (If needed)
+- LiDAR Heisai-XT-16 (If needed)
 
 ★ This setup and controlling Unitree GO2 was successfully tested using the following devices:
 - Note PC (RYZEN 5)
@@ -294,3 +294,110 @@ Change "test_move" to the file name you have downloaded or created.
 
 Your file may not be in the same directory.
 
+---
+
+# LiDAR Integration
+
+This section explains how to set up and visualize the **Hesai XT16 LiDAR** sensor that connects to the Unitree GO2 robot via ROS 2 Humble.
+Please finish **ROS 2 Environment Setup for Unitree GO2** written above.
+
+## Step 1. Verify LiDAR Connectivity
+
+Ensure the LiDAR device is physically connected and on the same subnet (`192.168.123.XXX`).
+
+Configure IP adress in detail as follow.
+First, ensure the LiDAR is conected and enter "192.168.123.20" in your web browser.
+You should see the LiDAR configration page.
+If you want to receive point cloud data via the Docking Station "192.168.123.18", set the Destination IP to 192.168.123.18.
+If you want to receive data from an external PC instead, set the Destination IP to the IP address of that PC.
+Alternatively, you can set the Destination IP to 255.255.255.255 as shown in the image, which allows any device within the 192.168.123.xxx subnet to receive the data.
+
+If the LiDAR has connected successfully, you should receive responses from DockingStation by running the following.
+
+```bash
+ping 192.168.123.20
+```
+
+If not, check your network settings or powersupply.
+
+## Step 2. Clone the Driver Repository
+
+Create a new ROS 2 workspace, if you haven't already done so.
+The "--recurse-submodules" flag is important to include required libraries.
+
+```bash
+mkdir -p ~/humble_ws/src
+cd ~/humble_ws/src
+git clone --recurse-submodules https://github.com/HesaiTechnology/HesaiLidar_ROS_2.0.git
+```
+
+## Step 3. Edit the Configuration File
+
+Edit the LiDAR configuration to match the IP address by opening "config.yaml" as follow.
+
+```bash
+sudo gedit ~/humble_ws/src/HesaiLidar_ROS_2.0/config/config.yaml
+```
+
+Update the following line. Make sure the IP matches your LiDAR device's static IP.
+
+```bash
+device_ip_address: 192.168.123.20
+```
+
+## Step 4. Build the Drive
+
+Build the Hasai LiDAR driver and links packages for development.
+
+```bash
+cd ~/humble_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install
+```
+
+## Step 5. Run the Driver
+
+Open two terminals and find the pass you need.
+
+```bash
+find ~/unitree_ros2 -name setup.sh
+```
+
+### Terminal 1 : Launch the LiDAR node
+
+Source the Unitree environment and the LiDAR workspace.
+
+```bash
+source ~/unitree_ros2/setup.sh
+source install/setup.bash
+```
+
+Then run the driver.
+
+```bash
+ros2 run hesai_ros_driver hesai_ros_driver_node
+```
+
+### Terminal 2 : Visualize using RViz2
+
+Source the Unitree environment and the LiDAR workspace.
+
+```bash
+source ~/unitree_ros2/setup.sh
+source install/setup.bash
+```
+
+Then run RViz2.
+
+```bash
+rviz2
+```
+
+In RViz, change the followings.
+
+ - Fixed Frame: hesai_lidar
+ - Ropic: /lidar_points
+ - Add Display type: PointClound2
+
+See the LiDAR point cloud rendered in real time to check the fixd frame.
+If you see something simiar, you have successfully conected LiDAR.
