@@ -1,3 +1,6 @@
+# Notion!
+This repository is open for temporary. After 31st August 2025, this repository will be changed to **Private** until this project is finished.
+
 # ROS 2 Environment Setup for Unitree GO2
 
 This repository document is the step-by-step procedure to set up a development environment for the Unitree GO2 quadruped robot using **ROS 2 Humble** on **Ubuntu 22.04**.
