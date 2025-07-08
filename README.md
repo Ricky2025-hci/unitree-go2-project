@@ -358,6 +358,12 @@ source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
 
+If you have encountered some CMake Error like picture bellow, you are likely to get an error at the end of "Step 5. Terminal 1".
+
+2
+
+
+
 ## Step 5. Run the Driver
 
 Open two terminals and find the pass you need.
@@ -380,6 +386,11 @@ Then run the driver.
 ```bash
 ros2 run hesai_ros_driver hesai_ros_driver_node
 ```
+
+If you have encountered some error like picture bellow, try **After running `colcon build` and trying to launch a node with `ros2 run` but have "OSError: [Errno 8] Exec format error:"**.
+
+3
+
 
 ### Terminal 2 : Visualize using RViz2
 
@@ -404,3 +415,18 @@ In RViz, change the followings.
 
 See the LiDAR point cloud rendered in real time to check the fixd frame.
 If you see something simiar, you have successfully conected LiDAR.
+
+
+### After running `colcon build` and trying to launch a node with `ros2 run` but have "OSError: [Errno 8] Exec format error:"
+
+This typically occurs when the build failed partially and left behind an incomplete or corrupted executable.
+
+Clean the build artifacts and rebuild from scratch:
+
+```bash
+cd ~/your_ws
+rm -rf build/ install/ log/
+colcon build --symlink-install
+```
+
+If there are no error, run the "Terminal 2".
