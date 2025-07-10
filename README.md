@@ -1,6 +1,7 @@
 # Notion!
 This repository is open for temporary. After 31st August 2025, this repository will be changed to **Private** until this project is finished.
 
+
 # ROS 2 Environment Setup for Unitree GO2
 
 This repository document is the step-by-step procedure to set up a development environment for the Unitree GO2 quadruped robot using **ROS 2 Humble** on **Ubuntu 22.04**.
@@ -303,6 +304,9 @@ Your file may not be in the same directory.
 
 This section explains how to set up and visualize the **Hesai XT16 LiDAR** sensor that connects to the Unitree GO2 robot via ROS 2 Humble.
 Please finish **ROS 2 Environment Setup for Unitree GO2** written above.
+
+**Note:** There have been some changes in the repository we use from Hesai Technology and we believe some of the files are missing. So, we have uploaded the raw file `humble_ws.zip`. (date:July 5th 2025)
+
 
 ## Step 1. Verify LiDAR Connectivity
 
