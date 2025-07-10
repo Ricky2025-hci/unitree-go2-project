@@ -360,8 +360,9 @@ colcon build --symlink-install
 
 If you have encountered some CMake Error like picture bellow, you are likely to get an error at the end of "Step 5. Terminal 1".
 
-2
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ad50a1c5-dd6a-4b3a-9a15-29ff95ae2c33" width="75%">
+</p>
 
 
 ## Step 5. Run the Driver
@@ -387,9 +388,11 @@ Then run the driver.
 ros2 run hesai_ros_driver hesai_ros_driver_node
 ```
 
-If you have encountered some error like picture bellow, try **After running `colcon build` and trying to launch a node with `ros2 run` but have "OSError: [Errno 8] Exec format error:"**.
+If you have encountered some error like picture bellow, try **After running `colcon build` and trying to launch a node with `ros2 run` but have "OSError: [Errno 8] Exec format error:"** written bellow.
 
-3
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/52041eb6-f197-41f7-a526-96075018d934" width="75%">
+</p>
 
 
 ### Terminal 2 : Visualize using RViz2
@@ -414,7 +417,14 @@ In RViz, change the followings.
  - Add Display type: PointClound2
 
 See the LiDAR point cloud rendered in real time to check the fixd frame.
+
+1
+
 If you see something simiar, you have successfully conected LiDAR.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/544c03ca-016b-4b58-89e8-77f7e526269c" width="100%">
+</p>
 
 
 ### After running `colcon build` and trying to launch a node with `ros2 run` but have "OSError: [Errno 8] Exec format error:"
